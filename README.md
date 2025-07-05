@@ -17,8 +17,6 @@ Inside the project directory, run:
 
 ```bash
 npm install
-# or
-yarn install
 ```
 
 This will install everything needed to use both the analyzer and the project's development environment (Vite, Tailwind, React, ESLint, etc.).
@@ -28,9 +26,8 @@ This will install everything needed to use both the analyzer and the project's d
 Once dependencies are installed, you can start the interactive script with:
 
 ```bash
-npm install
-# or
-yarn install
+npm run analyzer
+
 ```
 
 This runs the analyzer.ts file using tsx, allowing you to:
