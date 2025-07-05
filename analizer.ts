@@ -356,11 +356,11 @@ async function analyzeLocales(): Promise<AnalysisResult | null> {
 // Display results table
 function displayResultsTable(results: AnalysisResult): void {
   console.log(colorize("\n📊 Translation Keys Status", "bright"));
-  console.log("=".repeat(60));
+  console.log("=".repeat(54));
 
   // Table header
   console.log("Key".padEnd(35) + "Code".padEnd(8) + "EN".padEnd(8) + "ES");
-  console.log("-".repeat(60));
+  console.log("-".repeat(54));
 
   // Table rows
   results.keyStatuses.forEach((status) => {
@@ -390,8 +390,7 @@ function displayResultsTable(results: AnalysisResult): void {
     console.log(row);
   });
 
-  console.log("-".repeat(60));
-  console.log(`Total keys: ${results.keyStatuses.length}`);
+  console.log("-".repeat(54));
 }
 
 // Create readline interface
@@ -607,17 +606,24 @@ async function showMainMenu(results: AnalysisResult): Promise<void> {
 
   try {
     while (true) {
-      console.log(colorize("\n🎯 Main Menu", "bright"));
-      console.log("=".repeat(30));
-      console.log("1. Show keys table");
-      console.log("2. Add missing keys to locale files");
-      console.log("3. Delete unused keys from EN.json");
-      console.log("4. Delete unused keys from ES.json");
-      console.log("5. Re-analyze project");
-      console.log("6. Exit");
-      console.log();
+      console.clear();
 
-      const choice = await askInput(rl, "Select an option (1-6): ");
+      console.log(colorize("\n Main Menu", "bright"));
+      console.log("┌────────────────────────────────────────┐");
+      console.log(`│  1. 📋 Show translation keys table     │`);
+      console.log(`│  2. ➕ Add missing keys to locales     │`);
+      console.log(`│  3. 🧹 Delete unused keys from EN.json │`);
+      console.log(`│  4. 🧹 Delete unused keys from ES.json │`);
+      console.log(`│  5. 🔁 Re-analyze project              │`);
+      console.log(`│  6. ❌ Exit                            │`);
+      console.log("└────────────────────────────────────────┘\n");
+
+      const choice = await askInput(
+        rl,
+        colorize("\n📝 Your choice → ", "yellow") +
+          colorize("[1–6]", "yellow") +
+          colorize(": ", "cyan")
+      );
 
       switch (choice) {
         case "1":
@@ -657,21 +663,38 @@ async function showMainMenu(results: AnalysisResult): Promise<void> {
   }
 }
 
-// Main execution
+async function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Enhanced Main execution with loading animation
 async function main(): Promise<void> {
-  console.log(colorize("🌍 Enhanced i18n Locale Analyzer", "bright"));
-  console.log(colorize("===================================", "bright"));
+  console.clear();
+
+  const loadingText = colorize("⏳ Starting analysis.", "cyan");
+  process.stdout.write(loadingText);
+
+  const dots = [".", ".", ".", "."];
+  for (const dot of dots) {
+    await sleep(300);
+    process.stdout.write(dot);
+  }
+
+  console.log(); // New line after loading
 
   const results = await analyzeLocales();
 
   if (!results) {
+    console.log(colorize("\n❌ Analysis failed.", "red"));
     process.exit(1);
   }
 
-  displayResultsTable(results);
+  console.log(colorize("\n✅ Analysis completed successfully!\n", "green"));
+  await sleep(300);
+
   await showMainMenu(results);
 
-  console.log(colorize("\n✨ Analysis complete!", "green"));
+  console.log(colorize("\n✨ All done. Have a nice day!", "magenta"));
 }
 
 // Run the script

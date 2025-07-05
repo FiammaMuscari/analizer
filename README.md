@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# 🛠️ Installation and Usage of the Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project includes a script called `analizer.ts` that helps analyze and keep your i18n translation files clean and synchronized.
 
-Currently, two official plugins are available:
+![Analyzer Preview](src/assets/readme.webp)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js **v18 or higher**
+- A package manager like `npm` or `yarn`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🔧 Step 1: Install dependencies
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Inside the project directory, run:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This will install everything needed to use both the analyzer and the project's development environment (Vite, Tailwind, React, ESLint, etc.).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📌 Step 2: Run the i18n analyzer
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Once dependencies are installed, you can start the interactive script with:
+
+```bash
+npm install
+# or
+yarn install
 ```
+
+This runs the analizer.ts file using tsx, allowing you to:
+
+- View keys used in code vs those present in en.json and es.json
+
+- Add missing keys
+
+- Delete unused keys
+
+- Re-analyze the project from the interactive menu
+
+## 📁 Expected structure for the analyzer to work correctly
+
+```bash
+your-project/
+├── src/
+│   ├── locales/
+│   │   ├── en.json
+│   │   └── es.json
+│   └── (source files: .ts/.tsx/.js/.jsx)
+├── analizer.ts
+└── package.json
+
+```
+
+✅ The analyzer automatically detects the locales folder (src/locales) and scans all source files under src
