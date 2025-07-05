@@ -2,5 +2,6 @@
   "greeting": "Hola",
   "welcome": "¡Bienvenido a la aplicación simple de i18n!",
   "change_language": "Cambiar Idioma",
-  "current_language": "Idioma Actual"
+  "current_language": "Idioma Actual",
+  "bye": "Adios"
 }

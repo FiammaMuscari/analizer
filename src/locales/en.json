@@ -2,5 +2,7 @@
   "greeting": "Hello",
   "welcome": "Welcome to the simple i18n app!",
   "change_language": "Change Language",
-  "current_language": "Current Language"
+  "current_language": "Current Language",
+  "bye": "Bye",
+  "one": "One"
 }
