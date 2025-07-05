@@ -1,6 +1,6 @@
 # 🛠️ Installation and Usage of the Analyzer
 
-This project includes a script called `analizer.ts` that helps analyze and keep your i18n translation files clean and synchronized.
+This project includes a script called `analyzer.ts` that helps analyze and keep your i18n translation files clean and synchronized.
 
 ![Analyzer Preview](src/assets/readme.webp)
 
@@ -33,7 +33,7 @@ npm install
 yarn install
 ```
 
-This runs the analizer.ts file using tsx, allowing you to:
+This runs the analyzer.ts file using tsx, allowing you to:
 
 - View keys used in code vs those present in en.json and es.json
 
@@ -52,7 +52,7 @@ your-project/
 │   │   ├── en.json
 │   │   └── es.json
 │   └── (source files: .ts/.tsx/.js/.jsx)
-├── analizer.ts
+├── analyzer.ts
 └── package.json
 
 ```

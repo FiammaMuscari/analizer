@@ -16,7 +16,7 @@ function AppContent() {
 
   return (
     <>
-      <h1 className="my-8">i18n Analizer</h1>
+      <h1 className="my-8">i18n analyzer</h1>
 
       <LanguageSwitcher />
 

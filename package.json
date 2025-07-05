@@ -1,5 +1,5 @@
 {
-  "name": "analizer",
+  "name": "analyzer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "analizer": "tsx analizer.ts"
+    "analyzer": "tsx analyzer.ts"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
